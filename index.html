@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>First project</title>
 </head>
 <body>
-  <h1>В этой ветку будут проекты</h1>
+
+  <div id="app">
+    <!-- v-on
+     Сокращение: @ - @input="changeTitle"
+     Принимает: Function | Inline-выражение | Object
+     Параметр: event
+
+     Прикрепляет к элементу подписчик события. Тип события указывается в параметре. Выражение может быть именем метода, inline-выражением или вовсе отсутствовать, если указан один или несколько модификаторов.
+     У обычного элемента можно подписаться только на нативные события DOM. У элемента компонента можно подписаться на пользовательские события, вызываемые этим дочерним компонентом.
+
+     При работе с нативными событиями DOM, метод получает нативное событие единственным аргументом. В inline-выражениях, можно получить к нему доступ с помощью $event: v-on:click="handle('ok', $event)".
+
+     Событие input срабатывает каждый раз при изменении значения.
+     При настплении события input вызывается функция changeTitle -->
+    <input type="text" v-on:input="changeTitle">
+    <p>{{ title }}</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+      	title: 'Hellow World'
+      },
+      methods: {
+				changeTitle: function(event) {
+					this.title = event.target.value;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
