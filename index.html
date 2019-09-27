@@ -8,6 +8,10 @@
 <body>
 
   <div id="app">
+    <!-- v-once
+    Однократно отрисовывает элемент или компонент. При повторной отрисовке он, а также все его потомки, рассматриваются как статический контент и пропускаются. Это поможет увеличить производительность обновлений.
+    т.е. если не использовать v-once, то title будет "Hello", т.к. он переопределен в методе sayHello -->
+    <h1 v-once>{{ title }}</h1> <!-- Hello World -->
     <!-- v-bind
     Сокращение: : Example: :href="link"
     Динамически связывает атрибуты тега или входной параметр компонента с выражением.
@@ -15,7 +19,7 @@
     поддержка конкатенации строк <img :src="'/path/to/images/' + fileName">
     связывание CSS-класса <div :class="{ red: isRed }"></div> | <div :class="[classA, classB]"></div> | <div :class="[classA, { classB: isB, classC: isC }]">
     связывание локального стиля <div :style="{ fontSize: size + 'px' }"></div> -->
-    <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+    <p>{{ sayHello() }} <!-- Hello --> - <a v-bind:href="link">Google</a></p>
   </div>
 
   <script>
@@ -27,6 +31,7 @@
       },
       methods: {
       	sayHello: function() {
+					this.title = 'hello';
       		return this.title
         }
       }
