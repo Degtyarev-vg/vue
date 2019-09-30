@@ -8,19 +8,23 @@
 <body>
 
   <div id="app">
-    <!-- Если не указать модификатор .enter, то ф-я alertMe будет вызываться после каждого нажатия на квавишу,
-    но с указанным модификатором только при нажатии на клавишу enter (все клавиши см. в документации, также
-    можно через настройки опеределить свои псевдонимы клавиш) -->
-    <input type="text" v-on:keyup.enter="alertMe">
+    <!-- По клику на первый button будет увеличение счетчика на 4: на два увеличивается из-за ф-ии increase, еще на два из-за того,
+     что counter умножается на два прям в шаблоне.
+     По клику на второй button - счетчик увеличивается на два -->
+    <button v-on:click="increase(2, $event)">Click me</button>
+    <button v-on:click="counter++">Click me</button>
+    <p>{{ counter * 2 > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
   </div>
 
   <script>
     new Vue({
       el: '#app',
-      data: {},
+      data: {
+      	counter: 0
+      },
       methods: {
-				alertMe: function() {
-					alert('Alert');
+				increase: function(step, event) {
+					this.counter += step;
         }
       }
     });
