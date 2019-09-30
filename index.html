@@ -8,40 +8,19 @@
 <body>
 
   <div id="app">
-    <!-- v-once
-    Однократно отрисовывает элемент или компонент. При повторной отрисовке он, а также все его потомки, рассматриваются как статический контент и пропускаются. Это поможет увеличить производительность обновлений.
-    т.е. если не использовать v-once, то title будет "Hello", т.к. он переопределен в методе sayHello -->
-    <h1 v-once>{{ title }}</h1> <!-- Hello World -->
-    <!-- v-bind
-    Сокращение: : Example: :href="link"
-    Динамически связывает атрибуты тега или входной параметр компонента с выражением.
-    связывание атрибута <img v-bind:src="imageSrc">
-    поддержка конкатенации строк <img :src="'/path/to/images/' + fileName">
-    связывание CSS-класса <div :class="{ red: isRed }"></div> | <div :class="[classA, classB]"></div> | <div :class="[classA, { classB: isB, classC: isC }]">
-    связывание локального стиля <div :style="{ fontSize: size + 'px' }"></div> -->
-    <p>{{ sayHello() }} <!-- Hello --> - <a v-bind:href="link">Google</a></p>
-    <hr>
-    <!-- Если между <p> вставить {{ finishedLink }} то ссылка выведется просто как текст {{ finishedLink }}, поэтому нужен v-html
-    Принимает: string
-    Управляет HTML-содержимым элемента (innerHTML). Обратите внимание, что содержимое вставляется как обычный HTML — то есть не компилируется как шаблон Vue.
-    Не стоит организовывать вложенные шаблоны с помощью v-html, попробуйте лучше применить компоненты.
-    Динамическая отрисовка произвольного HTML-кода на сайте — это очень опасная практика, легко приводящая к XSS-уязвимостям. Передавайте в v-html только
-    содержимое, которому можно доверять, и никогда — необработанный пользовательский ввод. -->
-    <p v-html="finishedLink"></p>
+    <button v-on:click="increase">Click me</button>
+    <p>{{ counter }}</p>
   </div>
 
   <script>
     new Vue({
       el: '#app',
       data: {
-      	title: 'Hello World',
-        link: 'http://google.com',
-        finishedLink: '<a href="http://google.com">Google</a>'
+				counter: 0
       },
       methods: {
-      	sayHello: function() {
-					this.title = 'hello';
-      		return this.title
+				increase: function() {
+					this.counter++
         }
       }
     });
