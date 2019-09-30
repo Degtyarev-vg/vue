@@ -8,55 +8,20 @@
 <body>
 
   <div id="app">
-    <button v-on:click="increase(2, $event)">Click me</button>
-    <p>{{ counter }}</p>
-    <!-- Если водить мышью над <span>, то событие движение мыши будет учитываться и в нем, чтобы это избежать, мы можем
-     вызвать событие mousemove в span: <span v-on:mousemove="dummy">DEAD SPOT</span>, а затем в ф-ии dummy в methods
-     остановить всплытие (см. в methods)
-     Это можно сделать более простым способом, указав модификатор .stop директиве v-on
-     .stop — вызовет event.stopPropagation()
-     Можно добавляться сразу несколько модификаторов, например v-on:mousemove.stop.prevent -->
-    <p v-on:mousemove="updateCoordinates">
-      Coordinates: {{ x }} / {{ y }}
-      - <span v-on:mousemove.stop>DEAD SPOT</span>
-    </p>
+    <!-- Если не указать модификатор .enter, то ф-я alertMe будет вызываться после каждого нажатия на квавишу,
+    но с указанным модификатором только при нажатии на клавишу enter (все клавиши см. в документации, также
+    можно через настройки опеределить свои псевдонимы клавиш) -->
+    <input type="text" v-on:keyup.enter="alertMe">
   </div>
 
   <script>
     new Vue({
       el: '#app',
-      data: {
-				counter: 0,
-        x: 0,
-        y: 0
-      },
+      data: {},
       methods: {
-				increase: function(step, event) {
-					this.counter += step;
-					console.log(event.type);
-        },
-        /*
-        * Когда происходит событие, браузер создаёт объект события, записывает в него детали и передаёт его в качестве аргумента функции-обработчику.
-        * Некоторые свойства объекта event:
-        * event.type - Тип события, например "click"
-        * event.currentTarget - Элемент, на котором сработал обработчик.
-        * event.clientX / event.clientY - Координаты курсора в момент клика относительно окна, для событий мыши.
-        * Есть также и ряд других свойств, в зависимости от типа событий
-        * */
-				updateCoordinates: function(event) {
-					this.x = event.clientX;
-					this.y = event.clientY;
-        },
-        /*
-        * Когда на элементе происходит событие, обработчики сначала срабатывают на нём, потом на его родителе, затем выше и так далее, вверх по цепочке предков.
-        * Всплытие идёт с «целевого» элемента прямо наверх. По умолчанию событие будет всплывать до элемента <html>, а затем до объекта document, а иногда даже до
-        * window, вызывая все обработчики на своём пути.
-        * Но любой промежуточный обработчик может решить, что событие полностью обработано, и остановить всплытие.
-        * Для этого нужно вызвать метод event.stopPropagation()
-        * */
-        /*dummy: function(event) {
-					event.stopPropagation();
-        }*/
+				alertMe: function() {
+					alert('Alert');
+        }
       }
     });
   </script>
