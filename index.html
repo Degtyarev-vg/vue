@@ -20,6 +20,14 @@
     связывание CSS-класса <div :class="{ red: isRed }"></div> | <div :class="[classA, classB]"></div> | <div :class="[classA, { classB: isB, classC: isC }]">
     связывание локального стиля <div :style="{ fontSize: size + 'px' }"></div> -->
     <p>{{ sayHello() }} <!-- Hello --> - <a v-bind:href="link">Google</a></p>
+    <hr>
+    <!-- Если между <p> вставить {{ finishedLink }} то ссылка выведется просто как текст {{ finishedLink }}, поэтому нужен v-html
+    Принимает: string
+    Управляет HTML-содержимым элемента (innerHTML). Обратите внимание, что содержимое вставляется как обычный HTML — то есть не компилируется как шаблон Vue.
+    Не стоит организовывать вложенные шаблоны с помощью v-html, попробуйте лучше применить компоненты.
+    Динамическая отрисовка произвольного HTML-кода на сайте — это очень опасная практика, легко приводящая к XSS-уязвимостям. Передавайте в v-html только
+    содержимое, которому можно доверять, и никогда — необработанный пользовательский ввод. -->
+    <p v-html="finishedLink"></p>
   </div>
 
   <script>
@@ -27,7 +35,8 @@
       el: '#app',
       data: {
       	title: 'Hello World',
-        link: 'http://google.com'
+        link: 'http://google.com',
+        finishedLink: '<a href="http://google.com">Google</a>'
       },
       methods: {
       	sayHello: function() {
