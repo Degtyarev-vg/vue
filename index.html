@@ -26,24 +26,20 @@
 <body>
 
   <div id="app">
-    <p v-if="show">You can see me! <span>Hello!</span></p>
-    <p v-else>Now you see me!</p>
-    <!-- Тег template - html5 тег. В html он не отображается.
-     В данном примере мы используем его для того, чтобы скрыть или показать сразу несколько элементов, чем применять v-if к каждому по-отдельности
-     Можно, конечно, было использовать какой-нибудь другой тег, например div, но мы, например, не хотим, чтобы он был в разметке -->
-    <template v-if="show">
-      <h1>heading</h1>
-      <p>Inside a template</p>
-    </template>
-    <p v-show="show">Do you also see me?</p>
-    <button @click="show = !show">Switch</button>
+    <ul>
+      <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+    </ul>
   </div>
 
   <script>
     new Vue({
       el: '#app',
       data: {
-        show: true
+        ingredients: ['meat', 'fruit', 'cookies'],
+        persons: [
+          {name: 'Max', age:  27, color: 'red'},
+          {name: 'Anna', age:  'unknown', color: 'blue'}
+        ]
       }
     });
   </script>
