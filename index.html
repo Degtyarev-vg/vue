@@ -32,7 +32,7 @@
       типа «на местах». А если ключ указан, Vue изменяет порядок следования элементов, основываясь на изменении порядка ключей. Элементы, соответствующие
       ключам, которых больше нет, Vue всегда уничтожает.
       Потомки одного и того же общего родителя должны иметь уникальные ключи. -->
-      <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+      <li v-for="(ingredient, i) in ingredients" :key="ingredient + i">{{ ingredient }} ({{ i }})</li>
     </ul>
     <button @click="ingredients.push('spices')">Add new</button>
     <hr>
