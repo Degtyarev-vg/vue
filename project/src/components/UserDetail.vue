@@ -14,7 +14,8 @@
   	props: {
   		myName: String,
       resetFn: Function,
-			userAge: Number
+			userAge: Number,
+			resetAgeFn: Function
     },
     methods: {
   		switchName() {

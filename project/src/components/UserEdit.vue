@@ -3,13 +3,16 @@
         <h3>You may edit the User here</h3>
         <p>Edit me!</p>
         <p>User Age: {{ userAge }}</p>
-        <button @click="editAge">Edit Age</button>
+        <button @click="resetAgeFn(26)">Edit Age</button>
     </div>
 </template>
 
 <script>
   export default {
-  	props: ['userAge'],
+  	props: {
+  		userAge: Number,
+			resetAgeFn: Function
+    },
   	methods: {
 			editAge() {
 				this.userAge = 30;

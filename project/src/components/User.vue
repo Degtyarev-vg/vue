@@ -12,12 +12,13 @@
                   @nameWasReset="name = $event"
                   :resetFn="resetName"
                   :userAge="age"
+                  :resetAgeFn="resetAge"
                 ></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit
                   :userAge="age"
-                  @ageWasEdited="age = $event"
+                  :resetAgeFn="resetAge"
                 ></app-user-edit>
             </div>
         </div>
@@ -41,6 +42,9 @@
           },
           resetName() {
 						this.name = 'Vladimir'
+          },
+          resetAge(age) {
+						this.age = age;
           }
         },
         components: {
