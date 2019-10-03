@@ -3,17 +3,22 @@
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
         <p>User name: {{ switchName() }}</p>
+        <button @click="resetName">Reset Name</button>
     </div>
 </template>
 
 <script>
   export default {
   	props: {
-  		myName: [String, Array]
+  		myName: String
     },
     methods: {
   		switchName() {
   			return this.myName.split('').reverse().join('');
+      },
+			resetName() {
+  			this.myName = 'Max';
+        this.$emit('nameWasReset', this.myName);
       }
     }
   }
