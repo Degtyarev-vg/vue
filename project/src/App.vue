@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xl-12">
         <app-quote>
-          <h1>The Quote</h1>
+          <h1>{{ quoteTitle }}</h1>
           <p>A wonderful Quote</p>
         </app-quote>
       </div>
@@ -15,8 +15,20 @@
   import Quote from './components/Quote.vue';
 
   export default {
+    data: function() {
+      return {
+        quoteTitle: 'The Quote Title'
+      }
+    },
     components: {
       appQuote: Quote
     }
   }
 </script>
+
+<style scoped>
+  /*Этот цвет не применится к заголовку, т.к. h1 используется в компоненте*/
+  h1 {
+    color: red;
+  }
+</style>

@@ -18,4 +18,9 @@
     margin: 30px auto;
     text-align: center;
   }
+
+  /*Применится этот цвет к заголовку, хоть h1 вставляется из slot'а*/
+  h1 {
+    color: green;
+  }
 </style>
