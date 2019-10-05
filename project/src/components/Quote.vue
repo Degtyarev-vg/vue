@@ -1,6 +1,12 @@
 <template>
 	<div>
-    <slot></slot>
+    <div class="title">
+      <slot name="title"></slot>
+    </div>
+    <hr>
+    <div>
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 
@@ -22,5 +28,9 @@
   /*Применится этот цвет к заголовку, хоть h1 вставляется из slot'а*/
   h1 {
     color: green;
+  }
+
+  .title {
+    font-style: italic;
   }
 </style>
