@@ -1,10 +1,20 @@
 <template>
   <div>
-    <button @click="selectedComponent = 'appQuote'">appQuote</button>
-    <button @click="selectedComponent = 'appAdd'">appAdd</button>
-    <button @click="selectedComponent = 'appEdie'">appEdie</button>
+    <button class="btn btn-primary" @click="selectedComponent = 'appQuote'">appQuote</button>
+    <button class="btn btn-primary" @click="selectedComponent = 'appAdd'">appAdd</button>
+    <button class="btn btn-primary" @click="selectedComponent = 'appEdie'">appEdie</button>
 
-    <component :is="selectedComponent"></component>
+    <!-- В компоненте Add у нас есть кнопка, которая увеличивает счетчик
+    Если переключиться на другой компонент, то счетчик сбрасывается, а это
+    значит, что компонент полностью удаляется. Также это можно проверить при
+    помощи метода destroyed
+    Но иногда, при переключении между компонентами, вы хотите сохранить их
+    состояния или избежать повторной отрисовки по соображениям производительности,
+    для этого есть <keep-alive> -->
+    <!-- Неактивные компоненты будут закэшированы! -->
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
