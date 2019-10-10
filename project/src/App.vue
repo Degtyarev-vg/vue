@@ -1,11 +1,23 @@
 <template>
-  <h1>Clean template</h1>
+  <div class="container">
+    <appHeader></appHeader>
+    <appNewQuote></appNewQuote>
+    <appQuoteGrid></appQuoteGrid>
+  </div>
 </template>
 
 <script>
-export default {
+	import QuoteGrid from './components/QuoteGrid.vue';
+	import NewQuote from './components/NewQuote.vue';
+	import Header from './components/Header.vue';
 
-}
+  export default {
+		components: {
+			appQuoteGrid: QuoteGrid,
+			appNewQuote: NewQuote,
+			appHeader: Header
+		}
+  }
 </script>
 
 <style lang="scss">
