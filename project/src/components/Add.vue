@@ -1,8 +1,7 @@
 <template>
-	<h1>Quote</h1>
+  <h1>Add</h1>
 </template>
 
 <script>
 
 </script>
-
