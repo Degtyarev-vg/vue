@@ -1,8 +1,0 @@
-<template>
-	<h1>Quote</h1>
-</template>
-
-<script>
-
-</script>
-
