@@ -6,7 +6,10 @@
         <hr>
         <button class="btn btn-primary" @click="show = !show">Show Alert</button>
         <br><br>
-        <transition name="slide">
+        <transition name="fade" appear>
+          <div class="alert alert-info" v-if="show">This is some Info</div>
+        </transition>
+        <transition name="slide" type="animation" appear>
           <div class="alert alert-info" v-if="show">This is some Info</div>
         </transition>
       </div>
@@ -40,16 +43,19 @@
   }
 
   .slide-enter {
-
+    opacity: 0;
   }
   .slide-enter-active {
     animation: slide-in 1s ease-out forwards;
+    transition: opacity .5s;
   }
   .slide-leave {
 
   }
   .slide-leave-active {
     animation: slide-out 1s ease-out forwards;
+    transition: opacity 3s;
+    opacity: 0;
   }
 
   @keyframes slide-in {
